@@ -13,7 +13,14 @@ connectDB();
 
 const app = express();
 app.use(express.urlencoded({ extended: true }))
-app.use(cors());
+
+
+// Sabse pehle middleware lagayein
+app.use(cors({
+  origin: "*", // Ya phir specific domain: "http://localhost:5173"
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
 app.use(express.json());
 
 
