@@ -4,9 +4,9 @@ import dotenv from "dotenv";
 import leadRoutes from './routes/leadRoutes.js'
 import connectDB from "./config/db.js";
 
-
+import authRoute from './routes/authRoute.js'
 import facebookWebhookRoutes from "./routes/facebookWebhookRoutes.js";
-
+// import {createAdmin} from "./utils/createAdmin.js";
 dotenv.config();
 
 connectDB();
@@ -22,7 +22,8 @@ app.use(
   "/api/facebook",
   facebookWebhookRoutes
 );
-
+// createAdmin()
+app.use("/api/auth",authRoute) 
 app.use(
   "/api/leads",
   leadRoutes
